@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/trio-opdracht.netflix-statistix.iml" filepath="$PROJECT_DIR$/.idea/modules/trio-opdracht.netflix-statistix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/trio-opdracht.netflix-statistix_main.iml" filepath="$PROJECT_DIR$/.idea/modules/trio-opdracht.netflix-statistix_main.iml" group="trio-opdracht.netflix-statistix" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/trio-opdracht.netflix-statistix_test.iml" filepath="$PROJECT_DIR$/.idea/modules/trio-opdracht.netflix-statistix_test.iml" group="trio-opdracht.netflix-statistix" />
+    </modules>
+  </component>
+</project>
