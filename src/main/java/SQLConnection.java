@@ -4,13 +4,17 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class SQLConnection {
-    public final static String SQLEXPRESS = "SQLEXPRESS";
-    public final static String MSSQLSERVER = "MSSQLSERVER";
+    public enum SQLAccountName {SQLEXPRESS, MSSQLSERVER}
+    private static final String databaseName = "Bibliotheek";
+    private String connectionUrl;
 
-    public void init() {
+    public SQLConnection(SQLAccountName sqlAccountName){
         // Dit zijn de instellingen voor de verbinding. Vervang de databaseName indien deze voor jou anders is.
-        String connectionUrl = "jdbc:sqlserver://localhost\\" + SQLEXPRESS + ";databaseName=Bibliotheek;integratedSecurity=true;";
+        connectionUrl = "jdbc:sqlserver://localhost\\" + sqlAccountName.toString() + ";databaseName=" + databaseName + ";integratedSecurity=true;";
+    }
 
+    //bijvoorbeeld "SELECT TOP 10 * FROM Boek"
+    public void executeQuery(String SQL) {
         // Connection beheert informatie over de connectie met de database.
         Connection con = null;
 
@@ -28,7 +32,6 @@ public class SQLConnection {
             con = DriverManager.getConnection(connectionUrl);
 
             // Stel een SQL query samen.
-            String SQL = "SELECT TOP 10 * FROM Boek";
             stmt = con.createStatement();
             // Voer de query uit op de database.
             rs = stmt.executeQuery(SQL);
@@ -52,7 +55,6 @@ public class SQLConnection {
                 System.out.format("| %7d | %-32s | %-24s | \n", ISBN, title, author);
             }
             System.out.println(String.format("| %7s | %-32s | %-24s |\n", " ", " ", " ").replace(" ", "-"));
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
