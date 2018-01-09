@@ -1,10 +1,11 @@
+package database;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class SQLConnection {
-    public enum SQLAccountName {SQLEXPRESS, MSSQLSERVER}
     private static final String databaseName = "Bibliotheek";
     private String connectionUrl;
 
@@ -46,9 +47,6 @@ public class SQLConnection {
                 int ISBN = rs.getInt("ISBN");
                 String title = rs.getString("Titel");
                 String author = rs.getString("Auteur");
-
-                // Print de kolomwaarden.
-                // System.out.println(ISBN + " " + title + " " + author);
 
                 // Met 'format' kun je de string die je print het juiste formaat geven, als je dat wilt.
                 // %d = decimal, %s = string, %-32s = string, links uitgelijnd, 32 characters breed.

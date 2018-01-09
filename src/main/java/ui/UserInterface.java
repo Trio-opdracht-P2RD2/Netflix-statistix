@@ -1,3 +1,6 @@
+package ui;
+
+import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 
@@ -9,7 +12,7 @@ public class UserInterface implements Runnable {
 
     @Override public void run() {
         frame = new JFrame("Netflix Statistix");
-        frame.setPreferredSize(new Dimension(500, 350));
+        frame.setPreferredSize(new Dimension(750, 600));
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -20,6 +23,6 @@ public class UserInterface implements Runnable {
     }
 
     private void createComponents(Container container) {
-
+        container.add(new JInfoPanel(), BorderLayout.SOUTH);
     }
 }
