@@ -6,6 +6,8 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import ui.views.JTextView;
+
 public class JInfoPanel extends JPanel {
     public JInfoPanel(){
         super(new GridLayout(1, 2));

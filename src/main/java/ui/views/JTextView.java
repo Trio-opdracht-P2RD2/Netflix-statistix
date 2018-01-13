@@ -1,9 +1,11 @@
-package ui;
+package ui.views;
 
 import java.awt.Font;
 
 import javax.swing.JLabel;
 import javax.swing.border.EmptyBorder;
+
+import ui.FontType;
 
 public class JTextView extends JLabel {
     private String fontName;
