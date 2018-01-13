@@ -20,7 +20,11 @@ public class SQLConnection {
         return "jdbc:sqlserver://localhost\\" + sqlAccountName + ";databaseName=" + databaseName + ";integratedSecurity=true;";
     }
 
-    public void executeQuery(String database, String SQL) {
+    public void executeQuery(String database, String sql) {
+        executeQuery(database, sql, null);
+    }
+
+    public void executeQuery(String database, String sql, QueryResultListener resultListener) {
         // Connection beheert informatie over de connectie met de database.
         Connection con = null;
 
@@ -40,24 +44,9 @@ public class SQLConnection {
             // Stel een SQL query samen.
             stmt = con.createStatement();
             // Voer de query uit op de database.
-            rs = stmt.executeQuery(SQL);
+            rs = stmt.executeQuery(sql);
 
-            System.out.print(String.format("| %7s | %-32s | %-24s |\n", " ", " ", " ").replace(" ", "-"));
-            System.out.print(String.format("| %7s | %-32s | %-24s |\n", "ISBN", "Titel", "Auteur"));
-            System.out.print(String.format("| %7s | %-32s | %-24s |\n", " ", " ", " ").replace(" ", "-"));
-
-            // Als de resultset waarden bevat dan lopen we hier door deze waarden en printen ze.
-            while (rs.next()) {
-                // Vraag per row de kolommen in die row op.
-                int ISBN = rs.getInt("ISBN");
-                String title = rs.getString("Titel");
-                String author = rs.getString("Auteur");
-
-                // Met 'format' kun je de string die je print het juiste formaat geven, als je dat wilt.
-                // %d = decimal, %s = string, %-32s = string, links uitgelijnd, 32 characters breed.
-                System.out.format("| %7d | %-32s | %-24s | \n", ISBN, title, author);
-            }
-            System.out.println(String.format("| %7s | %-32s | %-24s |\n", " ", " ", " ").replace(" ", "-"));
+            if(resultListener != null) resultListener.onQueryResultReceived(rs);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
