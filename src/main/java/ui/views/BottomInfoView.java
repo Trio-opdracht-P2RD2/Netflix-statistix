@@ -1,4 +1,4 @@
-package ui;
+package ui.views;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -6,14 +6,12 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import ui.views.JTextView;
-
-public class JInfoPanel extends JPanel {
-    public JInfoPanel(){
+public class BottomInfoView extends JPanel {
+    public BottomInfoView(String appName, String authors){
         super(new GridLayout(1, 2));
         setBackground(Color.WHITE);
-        add(new JTextView("Netflix Statistix"));
-        add(new JTextView("Informatica 1A - Marc, Björn, Thomas"));
+        add(new TextView(appName));
+        add(new TextView(authors));
         setBorder(new EmptyBorder(2, 2, 2, 2));
     }
 }
