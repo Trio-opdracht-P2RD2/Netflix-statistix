@@ -1,4 +1,4 @@
-package database;
+package nl.trio_opdracht.netflix_statistix.database;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

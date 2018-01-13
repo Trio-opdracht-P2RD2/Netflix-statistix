@@ -1,24 +1,23 @@
-package ui.views;
+package nl.trio_opdracht.netflix_statistix.ui.views;
 
-import java.awt.Color;
 import java.awt.Font;
 
-import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.border.EmptyBorder;
 
-import ui.FontType;
+import nl.trio_opdracht.netflix_statistix.ui.FontType;
 
-public class Button extends JButton {
+public class TextView extends JLabel {
     private String fontName;
     private FontType fontType;
     private int fontSize;
 
-    public Button(){
+    public TextView(){
         super();
         init();
     }
 
-    public Button(String text){
+    public TextView(String text){
         super(text);
         init();
     }
@@ -28,7 +27,6 @@ public class Button extends JButton {
         fontType = FontType.NORMAL;
         fontSize = 16;
         updateFont();
-        setBackground(Color.LIGHT_GRAY);
         setBorder(new EmptyBorder(2, 2, 2, 2));
     }
 
@@ -52,6 +50,6 @@ public class Button extends JButton {
     }
 
     public void setPadding(int left, int top, int right, int bottom){
-        setBorder(new EmptyBorder(top, right, bottom, left));
+        setBorder(new EmptyBorder(left, top, right, bottom));
     }
 }

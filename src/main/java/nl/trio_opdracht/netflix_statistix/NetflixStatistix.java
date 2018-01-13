@@ -1,18 +1,16 @@
+package nl.trio_opdracht.netflix_statistix;
+
 import javax.swing.SwingUtilities;
 
-import database.SQLAccountName;
-import database.SQLConnection;
-import pages.AverageTimeWatched;
-import pages.Page;
-import ui.UserInterface;
+import nl.trio_opdracht.netflix_statistix.database.SQLConnection;
+import nl.trio_opdracht.netflix_statistix.pages.AverageTimeWatched;
+import nl.trio_opdracht.netflix_statistix.ui.UserInterface;
 
 public class NetflixStatistix {
     public static void main(String[] args) {
-        SQLConnection sqlConnection = new SQLConnection(SQLAccountName.MSSQLSERVER);
+        SQLConnection sqlConnection = new SQLConnection(Configuration.sqlAccountName);
 
-        SwingUtilities.invokeLater(new UserInterface(new Page[]{
-                new AverageTimeWatched(sqlConnection)
-        }));
+        SwingUtilities.invokeLater(new UserInterface(new AverageTimeWatched(sqlConnection)));
     }
 
     /*private static void printMovies(SQLConnection sqlConnection){

@@ -1,7 +1,7 @@
-package pages;
+package nl.trio_opdracht.netflix_statistix.pages;
 
-import database.SQLConnection;
-import ui.views.Panel;
+import nl.trio_opdracht.netflix_statistix.database.SQLConnection;
+import nl.trio_opdracht.netflix_statistix.ui.views.Panel;
 
 public abstract class Page {
     private SQLConnection sqlConnection;
@@ -15,7 +15,12 @@ public abstract class Page {
         this.contentView = contentView;
     }
 
-    public abstract void showPage();
+    public void showPage(){
+        getContentView().removeAll();
+        show();
+    }
+
+    protected abstract void show();
 
     public abstract String getTitle();
 

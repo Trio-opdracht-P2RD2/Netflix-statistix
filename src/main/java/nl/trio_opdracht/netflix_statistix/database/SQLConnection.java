@@ -1,4 +1,4 @@
-package database;
+package nl.trio_opdracht.netflix_statistix.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,25 +25,25 @@ public class SQLConnection {
     }
 
     public void executeQuery(String database, String sql, QueryResultListener resultListener) {
-        // Connection beheert informatie over de connectie met de database.
+        // Connection beheert informatie over de connectie met de nl.trio_opdracht.netflix_statistix.database.
         Connection con = null;
 
         // Statement zorgt dat we een SQL query kunnen uitvoeren.
         Statement stmt = null;
 
-        // ResultSet is de tabel die we van de database terugkrijgen.
+        // ResultSet is de tabel die we van de nl.trio_opdracht.netflix_statistix.database terugkrijgen.
         // We kunnen door de rows heen stappen en iedere kolom lezen.
         ResultSet rs = null;
 
         try {
             // 'Importeer' de driver die je gedownload hebt.
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            // Maak de verbinding met de database.
+            // Maak de verbinding met de nl.trio_opdracht.netflix_statistix.database.
             con = DriverManager.getConnection(createConnectionUrl(database));
 
             // Stel een SQL query samen.
             stmt = con.createStatement();
-            // Voer de query uit op de database.
+            // Voer de query uit op de nl.trio_opdracht.netflix_statistix.database.
             rs = stmt.executeQuery(sql);
 
             if(resultListener != null) resultListener.onQueryResultReceived(rs);

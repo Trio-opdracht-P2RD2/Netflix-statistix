@@ -1,31 +1,31 @@
-package ui;
+package nl.trio_opdracht.netflix_statistix.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
 
-import pages.Page;
-import ui.views.BottomInfoView;
-import ui.views.Panel;
-import ui.views.SideMenuView;
-import ui.views.Window;
+import nl.trio_opdracht.netflix_statistix.Configuration;
+import nl.trio_opdracht.netflix_statistix.pages.Page;
+import nl.trio_opdracht.netflix_statistix.ui.views.BottomInfoView;
+import nl.trio_opdracht.netflix_statistix.ui.views.Panel;
+import nl.trio_opdracht.netflix_statistix.ui.views.SideMenuView;
+import nl.trio_opdracht.netflix_statistix.ui.views.Window;
 
 public class UserInterface implements Runnable {
     private Window window;
     private Page[] pages;
-    private final static String appName = "Netflix Statistix";
 
-    public UserInterface(Page[] pages){
+    public UserInterface(Page... pages){
         this.pages = pages;
     }
 
     @Override public void run() {
-        window = new Window(appName);
+        window = new Window(Configuration.appName);
         createComponents(window.getContentPane());
         window.showWindow();
     }
 
     private void createComponents(Container container) {
-        container.add(new BottomInfoView(appName, "Informatica 1A - Marc, Björn, Thomas"), BorderLayout.SOUTH);
+        container.add(new BottomInfoView(Configuration.appName, Configuration.authors), BorderLayout.SOUTH);
 
         Panel contentView = new Panel();
         container.add(contentView);
@@ -35,7 +35,7 @@ public class UserInterface implements Runnable {
             page.setContentView(contentView);
             sideMenuView.addMenuItem(page.getTitle(), actionEvent -> {
                 page.showPage();
-                window.setTitle(appName + " - " + page.getTitle());
+                window.setTitle(Configuration.appName + " - " + page.getTitle());
             });
         }
         container.add(sideMenuView, BorderLayout.WEST);

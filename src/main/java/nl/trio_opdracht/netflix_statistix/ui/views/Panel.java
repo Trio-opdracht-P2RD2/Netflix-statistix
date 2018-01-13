@@ -1,4 +1,4 @@
-package ui.views;
+package nl.trio_opdracht.netflix_statistix.ui.views;
 
 import java.awt.LayoutManager;
 
