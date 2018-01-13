@@ -7,17 +7,17 @@ import javax.swing.border.EmptyBorder;
 
 import ui.FontType;
 
-public class JTextView extends JLabel {
+public class TextView extends JLabel {
     private String fontName;
     private FontType fontType;
     private int fontSize;
 
-    public JTextView(){
+    public TextView(){
         super();
         init();
     }
 
-    public JTextView(String text){
+    public TextView(String text){
         super(text);
         init();
     }
@@ -37,10 +37,12 @@ public class JTextView extends JLabel {
 
     public void setFontType(FontType type){
         fontType = type;
+        updateFont();
     }
 
     public void setFontName(String name){
         fontName = name;
+        updateFont();
     }
 
     private void updateFont(){

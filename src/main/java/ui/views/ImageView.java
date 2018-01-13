@@ -4,13 +4,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-public class JImageView extends JLabel {
-    public JImageView(){
+public class ImageView extends JLabel {
+    public ImageView(){
         super();
         setHorizontalAlignment(SwingConstants.CENTER);
     }
 
-    public JImageView(String imageUrl){
+    public ImageView(String imageUrl){
         this();
         setImageUrl(imageUrl);
     }
