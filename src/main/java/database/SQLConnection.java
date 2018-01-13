@@ -6,22 +6,21 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class SQLConnection {
-    private static final String databaseName = "Bibliotheek";
-    private String connectionUrl;
+    private String sqlAccountName;
 
     public SQLConnection(SQLAccountName sqlAccountName){
-        connectionUrl = createConnectionUrl(sqlAccountName.toString(), databaseName);
+        this.sqlAccountName = sqlAccountName.toString();
     }
 
     public SQLConnection(String customSqlAccountName){
-        connectionUrl = createConnectionUrl(customSqlAccountName, databaseName);
+        this.sqlAccountName = customSqlAccountName;
     }
 
-    private String createConnectionUrl(String accountName, String databaseName){
-        return "jdbc:sqlserver://localhost\\" + accountName + ";databaseName=" + databaseName + ";integratedSecurity=true;";
+    private String createConnectionUrl(String databaseName){
+        return "jdbc:sqlserver://localhost\\" + sqlAccountName + ";databaseName=" + databaseName + ";integratedSecurity=true;";
     }
 
-    public void executeQuery(String SQL) {
+    public void executeQuery(String database, String SQL) {
         // Connection beheert informatie over de connectie met de database.
         Connection con = null;
 
@@ -36,7 +35,7 @@ public class SQLConnection {
             // 'Importeer' de driver die je gedownload hebt.
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             // Maak de verbinding met de database.
-            con = DriverManager.getConnection(connectionUrl);
+            con = DriverManager.getConnection(createConnectionUrl(database));
 
             // Stel een SQL query samen.
             stmt = con.createStatement();
