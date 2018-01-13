@@ -7,7 +7,7 @@ import javax.swing.border.EmptyBorder;
 
 import nl.trio_opdracht.netflix_statistix.ui.FontType;
 
-public class TextView extends JLabel {
+public class TextView extends JLabel implements ViewPadding, ViewText {
     private String fontName;
     private FontType fontType;
     private int fontSize;

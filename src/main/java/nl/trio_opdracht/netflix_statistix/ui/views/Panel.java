@@ -6,7 +6,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class Panel extends JPanel{
+public class Panel extends JPanel implements ViewPadding{
     public Panel(){
         super();
     }

@@ -2,13 +2,15 @@ package nl.trio_opdracht.netflix_statistix.ui.views;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
 
 import nl.trio_opdracht.netflix_statistix.ui.FontType;
 
-public class Button extends JButton {
+public class Button extends JButton implements ViewPadding, ViewText {
     private String fontName;
     private FontType fontType;
     private int fontSize;
@@ -28,8 +30,20 @@ public class Button extends JButton {
         fontType = FontType.NORMAL;
         fontSize = 16;
         updateFont();
+
         setBackground(Color.LIGHT_GRAY);
-        setBorder(new EmptyBorder(2, 2, 2, 2));
+        addMouseListener(new MouseAdapter() {
+            @Override public void mouseEntered(MouseEvent mouseEvent) {
+                setBackground(getBackground().darker());
+            }
+
+            @Override public void mouseExited(MouseEvent mouseEvent) {
+                setBackground(getBackground().brighter());
+            }
+        });
+        setFocusPainted(false);
+
+        setPadding(2, 2, 2, 2);
     }
 
     public void setTextSize(int size){

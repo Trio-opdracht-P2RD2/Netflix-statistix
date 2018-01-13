@@ -5,7 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-public class ImageView extends JLabel {
+public class ImageView extends JLabel implements ViewPadding {
     public ImageView(){
         super();
         setHorizontalAlignment(SwingConstants.CENTER);
