@@ -10,11 +10,17 @@ public class SQLConnection {
     private String connectionUrl;
 
     public SQLConnection(SQLAccountName sqlAccountName){
-        // Dit zijn de instellingen voor de verbinding. Vervang de databaseName indien deze voor jou anders is.
-        connectionUrl = "jdbc:sqlserver://localhost\\" + sqlAccountName.toString() + ";databaseName=" + databaseName + ";integratedSecurity=true;";
+        connectionUrl = createConnectionUrl(sqlAccountName.toString(), databaseName);
     }
 
-    //bijvoorbeeld "SELECT TOP 10 * FROM Boek"
+    public SQLConnection(String customSqlAccountName){
+        connectionUrl = createConnectionUrl(customSqlAccountName, databaseName);
+    }
+
+    private String createConnectionUrl(String accountName, String databaseName){
+        return "jdbc:sqlserver://localhost\\" + accountName + ";databaseName=" + databaseName + ";integratedSecurity=true;";
+    }
+
     public void executeQuery(String SQL) {
         // Connection beheert informatie over de connectie met de database.
         Connection con = null;
