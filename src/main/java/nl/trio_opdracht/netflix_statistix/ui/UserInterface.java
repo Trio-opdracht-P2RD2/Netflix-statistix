@@ -28,6 +28,7 @@ public class UserInterface implements Runnable {
         container.add(new BottomInfoView(Configuration.appName, Configuration.authors), BorderLayout.SOUTH);
 
         ContainerView contentView = new ContainerView();
+        contentView.setPadding(25, 25, 25, 25);
         container.add(contentView);
 
         SideMenuView sideMenuView = new SideMenuView();
