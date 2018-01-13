@@ -3,6 +3,7 @@ package ui.views;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 public class ImageView extends JLabel {
     public ImageView(){
@@ -17,5 +18,9 @@ public class ImageView extends JLabel {
 
     public void setImageUrl(String imageUrl){
         setIcon(new ImageIcon(imageUrl));
+    }
+
+    public void setPadding(int left, int top, int right, int bottom){
+        setBorder(new EmptyBorder(top, right, bottom, left));
     }
 }

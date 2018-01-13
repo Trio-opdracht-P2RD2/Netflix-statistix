@@ -28,7 +28,7 @@ public class Button extends JButton {
         fontType = FontType.NORMAL;
         fontSize = 16;
         updateFont();
-        setBackground(Color.DARK_GRAY);
+        setBackground(Color.LIGHT_GRAY);
         setBorder(new EmptyBorder(2, 2, 2, 2));
     }
 
@@ -49,5 +49,9 @@ public class Button extends JButton {
 
     private void updateFont(){
         setFont(new Font(fontName, fontType == FontType.BOLD ? Font.BOLD : fontType == FontType.ITALIC ? Font.ITALIC : Font.PLAIN, fontSize));
+    }
+
+    public void setPadding(int left, int top, int right, int bottom){
+        setBorder(new EmptyBorder(top, right, bottom, left));
     }
 }

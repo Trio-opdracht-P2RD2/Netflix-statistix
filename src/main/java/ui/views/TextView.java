@@ -48,4 +48,8 @@ public class TextView extends JLabel {
     private void updateFont(){
         setFont(new Font(fontName, fontType == FontType.BOLD ? Font.BOLD : fontType == FontType.ITALIC ? Font.ITALIC : Font.PLAIN, fontSize));
     }
+
+    public void setPadding(int left, int top, int right, int bottom){
+        setBorder(new EmptyBorder(left, top, right, bottom));
+    }
 }
