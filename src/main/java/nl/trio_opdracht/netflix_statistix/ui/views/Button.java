@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
 
 import nl.trio_opdracht.netflix_statistix.ui.FontType;
+import nl.trio_opdracht.netflix_statistix.ui.views.interfaces.ViewPadding;
+import nl.trio_opdracht.netflix_statistix.ui.views.interfaces.ViewText;
 
 public class Button extends JButton implements ViewPadding, ViewText {
     private String fontName;

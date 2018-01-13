@@ -6,7 +6,9 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class Panel extends JPanel implements ViewPadding{
+import nl.trio_opdracht.netflix_statistix.ui.views.interfaces.ViewPadding;
+
+public class Panel extends JPanel implements ViewPadding {
     public Panel(){
         super();
     }

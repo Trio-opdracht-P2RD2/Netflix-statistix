@@ -6,6 +6,8 @@ import javax.swing.JLabel;
 import javax.swing.border.EmptyBorder;
 
 import nl.trio_opdracht.netflix_statistix.ui.FontType;
+import nl.trio_opdracht.netflix_statistix.ui.views.interfaces.ViewPadding;
+import nl.trio_opdracht.netflix_statistix.ui.views.interfaces.ViewText;
 
 public class TextView extends JLabel implements ViewPadding, ViewText {
     private String fontName;

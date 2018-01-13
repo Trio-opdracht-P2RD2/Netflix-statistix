@@ -5,6 +5,8 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import nl.trio_opdracht.netflix_statistix.ui.views.interfaces.ViewPadding;
+
 public class ImageView extends JLabel implements ViewPadding {
     public ImageView(){
         super();
