@@ -6,14 +6,15 @@ import ui.UserInterface;
 
 public class NetflixStatistix {
     public static void main(String[] args) {
+        System.out.println("Welcome to Netflix Statistix!");
         SwingUtilities.invokeLater(new UserInterface());
 
         //printBooks();
     }
 
     private static void printBooks(){
-        SQLConnection connection = new SQLConnection(SQLAccountName.MSSQLSERVER);
-        connection.executeQuery("Bibliotheek", "SELECT TOP 10 * FROM Boek", result -> {
+        System.out.println();
+        new SQLConnection(SQLAccountName.MSSQLSERVER).executeQuery("Bibliotheek", "SELECT TOP 10 * FROM Boek", result -> {
             System.out.print(String.format("| %7s | %-32s | %-24s |\n", " ", " ", " ").replace(" ", "-"));
             System.out.print(String.format("| %7s | %-32s | %-24s |\n", "ISBN", "Titel", "Auteur"));
             System.out.print(String.format("| %7s | %-32s | %-24s |\n", " ", " ", " ").replace(" ", "-"));
