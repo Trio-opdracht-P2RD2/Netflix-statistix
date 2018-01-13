@@ -6,7 +6,7 @@ import java.awt.Container;
 import nl.trio_opdracht.netflix_statistix.Configuration;
 import nl.trio_opdracht.netflix_statistix.pages.Page;
 import nl.trio_opdracht.netflix_statistix.ui.views.BottomInfoView;
-import nl.trio_opdracht.netflix_statistix.ui.views.Panel;
+import nl.trio_opdracht.netflix_statistix.ui.views.ContainerView;
 import nl.trio_opdracht.netflix_statistix.ui.views.SideMenuView;
 import nl.trio_opdracht.netflix_statistix.ui.views.Window;
 
@@ -27,7 +27,7 @@ public class UserInterface implements Runnable {
     private void createComponents(Container container) {
         container.add(new BottomInfoView(Configuration.appName, Configuration.authors), BorderLayout.SOUTH);
 
-        Panel contentView = new Panel();
+        ContainerView contentView = new ContainerView();
         container.add(contentView);
 
         SideMenuView sideMenuView = new SideMenuView();

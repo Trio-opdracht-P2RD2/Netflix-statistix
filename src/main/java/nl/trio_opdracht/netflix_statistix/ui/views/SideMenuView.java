@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 
-public class SideMenuView extends Panel {
+public class SideMenuView extends ContainerView {
     public SideMenuView(){
         super(BoxLayout.Y_AXIS);
         setBackground(Color.WHITE);

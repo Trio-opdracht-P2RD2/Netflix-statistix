@@ -8,16 +8,16 @@ import javax.swing.border.EmptyBorder;
 
 import nl.trio_opdracht.netflix_statistix.ui.views.interfaces.ViewPadding;
 
-public class Panel extends JPanel implements ViewPadding {
-    public Panel(){
+public class ContainerView extends JPanel implements ViewPadding {
+    public ContainerView(){
         super();
     }
 
-    public Panel(LayoutManager layoutManager){
+    public ContainerView(LayoutManager layoutManager){
         super(layoutManager);
     }
 
-    public Panel(int boxLayoutDirection){
+    public ContainerView(int boxLayoutDirection){
         super();
         setLayout(boxLayoutDirection);
     }
