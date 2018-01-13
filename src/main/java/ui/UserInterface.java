@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+import ui.views.BottomInfoView;
+
 public class UserInterface implements Runnable {
     private JFrame frame;
 
@@ -23,6 +25,6 @@ public class UserInterface implements Runnable {
     }
 
     private void createComponents(Container container) {
-        container.add(new JInfoPanel(), BorderLayout.SOUTH);
+        container.add(new BottomInfoView("Netflix Statistix", "Informatica 1A - Marc, Björn, Thomas"), BorderLayout.SOUTH);
     }
 }
