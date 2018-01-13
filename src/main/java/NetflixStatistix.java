@@ -9,15 +9,15 @@ public class NetflixStatistix {
         System.out.println("Welcome to Netflix Statistix!");
         SwingUtilities.invokeLater(new UserInterface());
 
-        //printBooks();
+        printBooks();
     }
 
     private static void printBooks(){
         System.out.println();
         new SQLConnection(SQLAccountName.MSSQLSERVER).executeQuery("Bibliotheek", "SELECT TOP 10 * FROM Boek", result -> {
-            System.out.print(String.format("| %7s | %-32s | %-24s |\n", " ", " ", " ").replace(" ", "-"));
-            System.out.print(String.format("| %7s | %-32s | %-24s |\n", "ISBN", "Titel", "Auteur"));
-            System.out.print(String.format("| %7s | %-32s | %-24s |\n", " ", " ", " ").replace(" ", "-"));
+            System.out.println(String.format("| %7s | %-32s | %-24s |", " ", " ", " ").replace(" ", "-"));
+            System.out.println(String.format("| %7s | %-32s | %-24s |", "ISBN", "Titel", "Auteur"));
+            System.out.println(String.format("| %7s | %-32s | %-24s |", " ", " ", " ").replace(" ", "-"));
 
             // Als de resultset waarden bevat dan lopen we hier door deze waarden en printen ze.
             while (result.next()) {
@@ -30,7 +30,7 @@ public class NetflixStatistix {
                 // %d = decimal, %s = string, %-32s = string, links uitgelijnd, 32 characters breed.
                 System.out.format("| %7d | %-32s | %-24s | \n", ISBN, title, author);
             }
-            System.out.println(String.format("| %7s | %-32s | %-24s |\n", " ", " ", " ").replace(" ", "-"));
+            System.out.println(String.format("| %7s | %-32s | %-24s |", " ", " ", " ").replace(" ", "-"));
         });
     }
 }
