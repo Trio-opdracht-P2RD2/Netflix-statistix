@@ -19,10 +19,14 @@ public class Panel extends JPanel implements ViewPadding {
 
     public Panel(int boxLayoutDirection){
         super();
-        setLayout(new BoxLayout(this, boxLayoutDirection));
+        setLayout(boxLayoutDirection);
     }
 
     public void setPadding(int left, int top, int right, int bottom){
         setBorder(new EmptyBorder(top, right, bottom, left));
+    }
+
+    public void setLayout(int boxLayoutDirection){
+        setLayout(new BoxLayout(this, boxLayoutDirection));
     }
 }

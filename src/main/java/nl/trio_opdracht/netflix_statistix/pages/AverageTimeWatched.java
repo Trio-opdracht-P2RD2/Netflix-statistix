@@ -17,7 +17,7 @@ public class AverageTimeWatched extends Page {
     }
 
     @Override protected void show() {
-        getContentView().setLayout(new BoxLayout(getContentView(), BoxLayout.Y_AXIS));
+        getContentView().setLayout(BoxLayout.Y_AXIS);
         getSqlConnection().executeQuery(Configuration.databaseName, query, result -> {
             while (result.next()) getContentView().add(new TextView(result.getInt("ID") + ": " + result.getString("Titel") + ", " + result.getString("Genre")));
             getContentView().updateUI();
