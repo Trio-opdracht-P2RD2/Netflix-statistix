@@ -1,25 +1,21 @@
-import java.awt.event.ActionListener;
-import java.util.HashMap;
-
 import javax.swing.SwingUtilities;
 
 import database.SQLAccountName;
 import database.SQLConnection;
+import pages.AverageTimeWatched;
+import pages.Page;
 import ui.UserInterface;
 
 public class NetflixStatistix {
     public static void main(String[] args) {
-        System.out.println("Welcome to Netflix Statistix!");
-
         SQLConnection sqlConnection = new SQLConnection(SQLAccountName.MSSQLSERVER);
 
-        HashMap<String, ActionListener> menuItems = new HashMap<>();
-        menuItems.put("Print movies", actionEvent -> printMovies(sqlConnection));
-
-        SwingUtilities.invokeLater(new UserInterface(menuItems));
+        SwingUtilities.invokeLater(new UserInterface(new Page[]{
+                new AverageTimeWatched(sqlConnection)
+        }));
     }
 
-    private static void printMovies(SQLConnection sqlConnection){
+    /*private static void printMovies(SQLConnection sqlConnection){
         System.out.println();
         sqlConnection.executeQuery(
                 "NetflixStatistix",
@@ -44,5 +40,5 @@ public class NetflixStatistix {
                     }
                     System.out.println(String.format("| %7s | %-32s | %-24s |", " ", " ", " ").replace(" ", "-"));
                 });
-    }
+    }*/
 }

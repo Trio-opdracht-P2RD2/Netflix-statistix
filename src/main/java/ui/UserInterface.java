@@ -2,39 +2,42 @@ package ui;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.event.ActionListener;
-import java.util.HashMap;
 
-import javax.swing.JFrame;
-import javax.swing.WindowConstants;
-
+import pages.Page;
 import ui.views.BottomInfoView;
+import ui.views.Panel;
 import ui.views.SideMenuView;
+import ui.views.Window;
 
 public class UserInterface implements Runnable {
-    private HashMap<String, ActionListener> menuItems;
+    private Window window;
+    private Page[] pages;
+    private final static String appName = "Netflix Statistix";
 
-    public UserInterface(HashMap<String, ActionListener> menuItems){
-        this.menuItems = menuItems;
+    public UserInterface(Page[] pages){
+        this.pages = pages;
     }
 
     @Override public void run() {
-        JFrame frame = new JFrame("Netflix Statistix");
-        frame.setPreferredSize(new Dimension(1000, 800));
-
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-        createComponents(frame.getContentPane());
-
-        frame.pack();
-        frame.setVisible(true);
+        window = new Window(appName);
+        createComponents(window.getContentPane());
+        window.showWindow();
     }
 
     private void createComponents(Container container) {
+        container.add(new BottomInfoView(appName, "Informatica 1A - Marc, Björn, Thomas"), BorderLayout.SOUTH);
+
+        Panel contentView = new Panel();
+        container.add(contentView);
+
         SideMenuView sideMenuView = new SideMenuView();
-        menuItems.forEach(sideMenuView::addMenuItem);
-        container.add(sideMenuView);
-        container.add(new BottomInfoView("Netflix Statistix", "Informatica 1A - Marc, Björn, Thomas"), BorderLayout.SOUTH);
+        for(Page page : pages) {
+            page.setContentView(contentView);
+            sideMenuView.addMenuItem(page.getTitle(), actionEvent -> {
+                page.showPage();
+                window.setTitle(appName + " - " + page.getTitle());
+            });
+        }
+        container.add(sideMenuView, BorderLayout.WEST);
     }
 }
