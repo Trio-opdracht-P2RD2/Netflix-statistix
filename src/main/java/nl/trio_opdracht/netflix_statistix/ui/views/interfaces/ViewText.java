@@ -1,4 +1,4 @@
-package nl.trio_opdracht.netflix_statistix.ui.views;
+package nl.trio_opdracht.netflix_statistix.ui.views.interfaces;
 
 import nl.trio_opdracht.netflix_statistix.ui.FontType;
 
