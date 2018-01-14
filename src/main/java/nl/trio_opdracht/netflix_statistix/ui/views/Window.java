@@ -1,11 +1,12 @@
 package nl.trio_opdracht.netflix_statistix.ui.views;
 
 import java.awt.Dimension;
-import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
+
+import nl.trio_opdracht.netflix_statistix.Configuration;
 
 public class Window extends JFrame {
     public Window(String title){
@@ -20,6 +21,6 @@ public class Window extends JFrame {
     }
 
     public void setIcon(String path){
-        setIconImage(new ImageIcon(new File("").getAbsolutePath() + "\\src\\main\\resources\\" + path).getImage());
+        setIconImage(new ImageIcon(Configuration.projectPath + "\\resources\\" + path).getImage());
     }
 }

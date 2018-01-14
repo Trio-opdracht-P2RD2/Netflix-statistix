@@ -10,4 +10,6 @@ public class Configuration {
     public final static String databaseName = "NetflixStatistix";
 
     public final static String authors = "Informatica 1A - Marc, Björn, Thomas";
+
+    public final static String projectPath = System.getProperty("user.dir") + "\\src\\main";
 }
