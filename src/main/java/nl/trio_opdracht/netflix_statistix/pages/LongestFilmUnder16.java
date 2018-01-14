@@ -1,7 +1,5 @@
 package nl.trio_opdracht.netflix_statistix.pages;
 
-import javax.swing.BoxLayout;
-
 import nl.trio_opdracht.netflix_statistix.Configuration;
 import nl.trio_opdracht.netflix_statistix.database.SQLConnection;
 import nl.trio_opdracht.netflix_statistix.ui.views.TextView;
@@ -12,13 +10,14 @@ public class LongestFilmUnder16 extends Page {
     }
 
     @Override protected void show() {
-        getContentView().setLayout(BoxLayout.Y_AXIS);
         getSqlConnection().executeQuery(Configuration.databaseName,
                 "SELECT TOP 1 Titel\n" +
                 "FROM Film\n" +
                 "WHERE CAST(SUBSTRING(Leeftijdsindicatie, 0, CHARINDEX(' jaar en ouder', Leeftijdsindicatie)) AS INT) < 16\n" +
                 "ORDER BY Tijdsduur DESC", results -> {
                     while(results.next()) getContentView().add(new TextView(results.getString("Titel")));
+                    if(getContentView().getComponentCount() == 0) getContentView().add(new TextView("Er zijn geen films voor kinderen jonder dan 16 jaar"));
+                    getContentView().updateUI();
                 });
     }
 
