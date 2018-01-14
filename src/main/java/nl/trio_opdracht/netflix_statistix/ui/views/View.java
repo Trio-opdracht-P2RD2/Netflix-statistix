@@ -7,7 +7,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.border.EmptyBorder;
 
@@ -61,7 +60,6 @@ public class View<T extends JComponent> {
     }
 
     public void setFontType(FontType type){
-        if(getJComponent() instanceof JButton) System.out.println("setFontType(" + type.toString() + ");");
         fontType = type;
         updateFont();
     }
@@ -72,7 +70,6 @@ public class View<T extends JComponent> {
     }
 
     private void updateFont(){
-        if(getJComponent() instanceof JButton) System.out.println(fontType.toString());
         getJComponent().setFont(new Font(fontName, fontType == FontType.BOLD ? Font.BOLD : fontType == FontType.ITALIC ? Font.ITALIC : Font.PLAIN, fontSize));
         getJComponent().updateUI();
     }
