@@ -20,9 +20,9 @@ public class FilmsWatched extends Page {
         getContentView().setLayout(BoxLayout.Y_AXIS);
         getSqlConnection().executeQuery(Configuration.databaseName,
                 "SELECT Abonneenummer, Profielnaam\n" +
-                        "FROM Profiel", accountsResult -> {
+                "FROM Profiel", results -> {
                     HashMap<String, Integer> accounts = new HashMap<>();
-                    while(accountsResult.next()) accounts.put(accountsResult.getString("Profielnaam"), accountsResult.getInt("Abonneenummer"));
+                    while(results.next()) accounts.put(results.getString("Profielnaam"), results.getInt("Abonneenummer"));
 
                     showResults(accounts);
                 });

@@ -7,6 +7,7 @@ import nl.trio_opdracht.netflix_statistix.pages.AccountsWithOneProfile;
 import nl.trio_opdracht.netflix_statistix.pages.AverageTimeWatched;
 import nl.trio_opdracht.netflix_statistix.pages.FilmsWatched;
 import nl.trio_opdracht.netflix_statistix.pages.LongestFilmUnder16;
+import nl.trio_opdracht.netflix_statistix.pages.TimesFullyWatchedFilm;
 import nl.trio_opdracht.netflix_statistix.ui.UserInterface;
 
 public class NetflixStatistix {
@@ -16,6 +17,7 @@ public class NetflixStatistix {
                 new AverageTimeWatched(sqlConnection),
                 new FilmsWatched(sqlConnection),
                 new LongestFilmUnder16(sqlConnection),
-                new AccountsWithOneProfile(sqlConnection)));
+                new AccountsWithOneProfile(sqlConnection),
+                new TimesFullyWatchedFilm(sqlConnection)));
     }
 }
