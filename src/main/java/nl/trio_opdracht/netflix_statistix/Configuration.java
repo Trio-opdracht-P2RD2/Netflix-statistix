@@ -15,7 +15,7 @@ public class Configuration {
 
     public final static String projectPath = System.getProperty("user.dir") + "\\src\\main";
 
-    public final static Color backgroundColor = Color.decode("#00838F");
+    public final static Color backgroundColor = Color.decode("#EEEEEE");
 
     public final static String defaultFont = "Segoe UI";
 }
