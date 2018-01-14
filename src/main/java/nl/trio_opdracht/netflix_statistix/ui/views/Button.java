@@ -1,6 +1,7 @@
 package nl.trio_opdracht.netflix_statistix.ui.views;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -44,6 +45,8 @@ public class Button extends JButton implements ViewPadding, ViewText {
             }
         });
         setFocusPainted(false);
+
+        setAlignmentX(Component.LEFT_ALIGNMENT);
 
         setPadding(2, 2, 2, 2);
     }

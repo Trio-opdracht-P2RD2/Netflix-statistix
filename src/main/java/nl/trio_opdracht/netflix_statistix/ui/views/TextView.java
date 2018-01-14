@@ -1,5 +1,6 @@
 package nl.trio_opdracht.netflix_statistix.ui.views;
 
+import java.awt.Component;
 import java.awt.Font;
 
 import javax.swing.JLabel;
@@ -29,7 +30,10 @@ public class TextView extends JLabel implements ViewPadding, ViewText {
         fontType = FontType.NORMAL;
         fontSize = 16;
         updateFont();
-        setBorder(new EmptyBorder(2, 2, 2, 2));
+
+        setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        setPadding(2, 2, 2, 2);
     }
 
     public void setTextSize(int size){
