@@ -16,9 +16,8 @@ public class AccountsWithOneProfile extends Page {
                 "INNER JOIN Profiel ON Account.Abonneenummer = Profiel.Abonneenummer\n" +
                 "GROUP BY Account.Abonneenummer, Account.Naam\n" +
                 "HAVING COUNT(*) = 1", results -> {
-                    while(results.next()) getContentView().add(new TextView(results.getString("Naam")));
-                    if(getContentView().getComponentCount() == 0) getContentView().add(new TextView("Er zijn geen accounts met slechts één profiel"));
-                    getContentView().updateUI();
+                    while(results.next()) getContentView().addChild(new TextView(results.getString("Naam")));
+                    if(getContentView().getChildCount() == 0) getContentView().addChild(new TextView("Er zijn geen accounts met slechts één profiel"));
                 });
     }
 

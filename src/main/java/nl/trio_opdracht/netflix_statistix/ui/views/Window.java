@@ -25,4 +25,8 @@ public class Window extends JFrame {
     public void setIcon(String path){
         setIconImage(new ImageIcon(Configuration.projectPath + "\\resources\\" + path).getImage());
     }
+
+    public void addChild(View child){
+        add(child.getJComponent());
+    }
 }

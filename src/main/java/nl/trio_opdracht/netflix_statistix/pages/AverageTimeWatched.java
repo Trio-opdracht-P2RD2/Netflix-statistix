@@ -49,21 +49,20 @@ public class AverageTimeWatched extends Page {
         profileNames.addAll(accounts.keySet());
         DropDown accountsDropdown = new DropDown(profileNames);
 
-        seriesDropdown.addActionListener(actionEvent -> updateContent(results, (String) seriesDropdown.getSelectedItem(), (String) accountsDropdown.getSelectedItem(), accounts.getOrDefault(accountsDropdown.getSelectedItem(), -1)));
-        accountsDropdown.addActionListener(actionEvent -> updateContent(results, (String) seriesDropdown.getSelectedItem(), (String) accountsDropdown.getSelectedItem(), accounts.getOrDefault(accountsDropdown.getSelectedItem(), -1)));
+        seriesDropdown.setOnItemSelectedListener((dropDown, item, index) -> updateContent(results, item, accountsDropdown.getSelectedItem(), accounts.getOrDefault(accountsDropdown.getSelectedItem(), -1)));
+        accountsDropdown.setOnItemSelectedListener((dropDown, item, index) -> updateContent(results, seriesDropdown.getSelectedItem(), item, accounts.getOrDefault(item, -1)));
 
-        seriesDropdown.setSelectedIndex(0);
-        accountsDropdown.setSelectedIndex(0);
+        seriesDropdown.selectByIndex(0);
+        accountsDropdown.selectByIndex(0);
 
-        getContentView().add(seriesDropdown);
-        getContentView().add(new TextView(" "));
-        getContentView().add(accountsDropdown);
-        getContentView().add(results);
-        getContentView().updateUI();
+        getContentView().addChild(seriesDropdown);
+        getContentView().addChild(new TextView(" "));
+        getContentView().addChild(accountsDropdown);
+        getContentView().addChild(results);
     }
 
     private void updateContent(ContainerView results, String serie, String profileName, int abboneenummer){
-        results.removeAll();
+        results.removeAllChildren();
         if(!Objects.equals(serie, "Selecteer serie")) getSqlConnection().executeQuery(Configuration.databaseName,
                 "SELECT Titel, Seizoen, AVG(Percentage) AS 'AverageWatched'\n" +
                 "FROM Aflevering\n" +
@@ -71,12 +70,10 @@ public class AverageTimeWatched extends Page {
                 "WHERE Serie = '" + serie + "'" + (!Objects.equals(profileName, "Alle accounts") ? " AND Abonneenummer = " + abboneenummer + " AND Profielnaam = '" + profileName + "'" : "") + "\n" +
                 "GROUP BY ID, Titel, Seizoen\n" +
                 "ORDER BY Seizoen", result2 -> {
-                    while (result2.next()) results.add(new TextView(result2.getString("Seizoen") + " - " + result2.getString("Titel") + ": " + result2.getInt("AverageWatched") + "%"));
-                    if(results.getComponentCount() == 0) results.add(new TextView("Geen bekeken afleveringen voor het geselecteerde profiel"));
-                    results.updateUI();
+                    while (result2.next()) results.addChild(new TextView(result2.getString("Seizoen") + " - " + result2.getString("Titel") + ": " + result2.getInt("AverageWatched") + "%"));
+                    if(results.getChildCount() == 0) results.addChild(new TextView("Geen bekeken afleveringen voor het geselecteerde profiel"));
                 });
-        else results.add(new TextView("Geen serie geselecteerd"));
-        results.updateUI();
+        else results.addChild(new TextView("Geen serie geselecteerd"));
     }
 
     @Override public String getTitle() {

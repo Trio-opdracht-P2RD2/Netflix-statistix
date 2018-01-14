@@ -5,21 +5,16 @@ import java.awt.LayoutManager;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import nl.trio_opdracht.netflix_statistix.ui.views.interfaces.ViewPadding;
 
 import static nl.trio_opdracht.netflix_statistix.Configuration.backgroundColor;
 
-public class ContainerView extends JPanel implements ViewPadding {
+public class ContainerView extends View<JPanel> {
     public ContainerView(){
-        super();
-        init();
+        super(new JPanel());
     }
 
     public ContainerView(LayoutManager layoutManager){
-        super(layoutManager);
-        init();
+        super(new JPanel(layoutManager));
     }
 
     public ContainerView(int boxLayoutDirection){
@@ -27,16 +22,12 @@ public class ContainerView extends JPanel implements ViewPadding {
         setLayout(boxLayoutDirection);
     }
 
-    private void init(){
-        setBackground(backgroundColor);
-        setAlignmentX(Component.LEFT_ALIGNMENT);
-    }
-
-    public void setPadding(int left, int top, int right, int bottom){
-        setBorder(new EmptyBorder(top, right, bottom, left));
+    @Override protected void init(){
+        setBackgroundColor(backgroundColor);
+        setHorizontalAlignment(Component.LEFT_ALIGNMENT);
     }
 
     public void setLayout(int boxLayoutDirection){
-        setLayout(new BoxLayout(this, boxLayoutDirection));
+        getJComponent().setLayout(new BoxLayout(getJComponent(), boxLayoutDirection));
     }
 }

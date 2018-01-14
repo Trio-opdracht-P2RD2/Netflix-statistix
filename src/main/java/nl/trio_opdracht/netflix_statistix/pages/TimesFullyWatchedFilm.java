@@ -33,27 +33,24 @@ public class TimesFullyWatchedFilm extends Page {
         results.setPadding(0, 25, 0, 0);
 
         DropDown accountsDropdown = new DropDown(films.keySet());
-        accountsDropdown.addActionListener(actionEvent -> updateContent(results, (String) accountsDropdown.getSelectedItem(), films.getOrDefault(accountsDropdown.getSelectedItem(), -1)));
-        accountsDropdown.setSelectedIndex(0);
+        accountsDropdown.setOnItemSelectedListener((dropDown, item, index) -> updateContent(results, item, films.getOrDefault(item, -1)));
+        accountsDropdown.selectByIndex(0);
 
-        getContentView().add(accountsDropdown);
-        getContentView().add(results);
-        getContentView().updateUI();
+        getContentView().addChild(accountsDropdown);
+        getContentView().addChild(results);
     }
 
     private void updateContent(ContainerView results, String filmName, int filmID){
-        results.removeAll();
+        results.removeAllChildren();
         getSqlConnection().executeQuery(Configuration.databaseName,
                 "SELECT COUNT(*) AS 'TimesFullyWatched'\n" +
                 "FROM Film\n" +
                 "INNER JOIN Bekeken ON Bekeken.Gezien = Film.ID\n" +
                 "WHERE Percentage = 100 AND Film.Titel = '" + filmName + "' AND Film.ID = " + filmID + "\n" +
                 "GROUP BY Film.ID", result2 -> {
-                    while (result2.next()) results.add(new TextView(result2.getInt("TimesFullyWatched") + " keer volledig bekeken"));
-                    if(results.getComponentCount() == 0) results.add(new TextView("0 keer volledig bekeken"));
-                    results.updateUI();
+                    while (result2.next()) results.addChild(new TextView(result2.getInt("TimesFullyWatched") + " keer volledig bekeken"));
+                    if(results.getChildCount() == 0) results.addChild(new TextView("0 keer volledig bekeken"));
                 });
-        results.updateUI();
     }
 
     @Override public String getTitle() {

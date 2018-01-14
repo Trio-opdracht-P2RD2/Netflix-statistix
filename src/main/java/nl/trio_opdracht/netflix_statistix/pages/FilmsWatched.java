@@ -33,26 +33,23 @@ public class FilmsWatched extends Page {
         results.setPadding(0, 25, 0, 0);
 
         DropDown accountsDropdown = new DropDown(accounts.keySet());
-        accountsDropdown.addActionListener(actionEvent -> updateContent(results, (String) accountsDropdown.getSelectedItem(), accounts.getOrDefault(accountsDropdown.getSelectedItem(), -1)));
-        accountsDropdown.setSelectedIndex(0);
+        accountsDropdown.setOnItemSelectedListener((dropDown, item, index) -> updateContent(results, item, accounts.getOrDefault(item, -1)));
+        accountsDropdown.selectByIndex(0);
 
-        getContentView().add(accountsDropdown);
-        getContentView().add(results);
-        getContentView().updateUI();
+        getContentView().addChild(accountsDropdown);
+        getContentView().addChild(results);
     }
 
     private void updateContent(ContainerView results, String profileName, int abboneenummer){
-        results.removeAll();
+        results.removeAllChildren();
         getSqlConnection().executeQuery(Configuration.databaseName,
                 "SELECT Titel\n" +
                 "FROM Bekeken\n" +
                 "INNER JOIN Film ON Film.ID = Bekeken.Gezien\n" +
                 "WHERE Abonneenummer = " + abboneenummer + " AND Profielnaam = '" + profileName + "'", result2 -> {
-                    while (result2.next()) results.add(new TextView(result2.getString("Titel")));
-                    if(results.getComponentCount() == 0) results.add(new TextView("Geen bekeken films voor het geselecteerde profiel"));
-                    results.updateUI();
+                    while (result2.next()) results.addChild(new TextView(result2.getString("Titel")));
+                    if(results.getChildCount() == 0) results.addChild(new TextView("Geen bekeken films voor het geselecteerde profiel"));
                 });
-        results.updateUI();
     }
 
     @Override public String getTitle() {

@@ -16,8 +16,7 @@ public abstract class Page {
     }
 
     public void showPage(){
-        getContentView().removeAll();
-        getContentView().updateUI();
+        getContentView().removeAllChildren();
         show();
     }
 

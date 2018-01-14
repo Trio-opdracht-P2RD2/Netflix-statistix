@@ -6,11 +6,14 @@ import java.awt.GridLayout;
 public class BottomInfoView extends ContainerView {
     public BottomInfoView(String appName, String authors){
         super(new GridLayout(1, 2));
-        setBackground(Color.WHITE);
         TextView app = new TextView(appName);
         app.setImageUrl("appicon.png");
-        add(app);
-        add(new TextView(authors));
+        addChild(app);
+        addChild(new TextView(authors));
+    }
+
+    @Override protected void init(){
+        setBackgroundColor(Color.WHITE);
         setPadding(4, 4, 4, 4);
     }
 }

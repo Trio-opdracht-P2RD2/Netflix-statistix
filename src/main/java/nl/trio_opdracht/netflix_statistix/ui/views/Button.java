@@ -1,77 +1,53 @@
 package nl.trio_opdracht.netflix_statistix.ui.views;
 
 import java.awt.Component;
-import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
-import javax.swing.border.EmptyBorder;
-
-import nl.trio_opdracht.netflix_statistix.ui.FontType;
-import nl.trio_opdracht.netflix_statistix.ui.views.interfaces.ViewPadding;
-import nl.trio_opdracht.netflix_statistix.ui.views.interfaces.ViewText;
 
 import static nl.trio_opdracht.netflix_statistix.Configuration.tintColor;
 
-public class Button extends JButton implements ViewPadding, ViewText {
-    private String fontName;
-    private FontType fontType;
-    private int fontSize;
+public class Button extends View<JButton> {
+    private OnClickListener onClickListener;
 
     public Button(){
-        super();
-        init();
+        super(new JButton());
     }
 
     public Button(String text){
-        super(text);
-        init();
+        super(new JButton(text));
     }
 
-    private void init(){
-        fontName = "Arial";
-        fontType = FontType.NORMAL;
-        fontSize = 16;
-        updateFont();
+    public Button(View button){
+        super(button);
+        if(button instanceof Button) this.onClickListener = ((Button) button).onClickListener;
+    }
 
-        setBackground(tintColor);
-        addMouseListener(new MouseAdapter() {
-            @Override public void mouseEntered(MouseEvent mouseEvent) {
-                setBackground(getBackground().darker());
-            }
-
-            @Override public void mouseExited(MouseEvent mouseEvent) {
-                setBackground(getBackground().brighter());
-            }
+    @Override protected void init(){
+        setBackgroundColor(tintColor);
+        setOnHoverListener((view, isHovered) -> setBackgroundColor(isHovered ? getBackgroundColor().darker() : getBackgroundColor().brighter()));
+        getJComponent().addActionListener(actionEvent -> {
+            if(onClickListener != null) onClickListener.onClick(Button.this);
         });
-        setFocusPainted(false);
+        getJComponent().setFocusPainted(false);
 
-        setAlignmentX(Component.LEFT_ALIGNMENT);
+        setHorizontalAlignment(Component.LEFT_ALIGNMENT);
 
         setPadding(4, 4, 4, 4);
     }
 
-    public void setTextSize(int size){
-        fontSize = size;
-        updateFont();
+    public interface OnClickListener {
+        void onClick(Button view);
     }
 
-    public void setFontType(FontType type){
-        fontType = type;
-        updateFont();
+    public void setOnClickListener(OnClickListener listener){
+        onClickListener = listener;
     }
 
-    public void setFontName(String name){
-        fontName = name;
-        updateFont();
+    public boolean isHovered(){
+        return getJComponent().getModel().isRollover();
     }
 
-    private void updateFont(){
-        setFont(new Font(fontName, fontType == FontType.BOLD ? Font.BOLD : fontType == FontType.ITALIC ? Font.ITALIC : Font.PLAIN, fontSize));
-    }
-
-    public void setPadding(int left, int top, int right, int bottom){
-        setBorder(new EmptyBorder(top, right, bottom, left));
+    public void click(){
+        getJComponent().doClick();
     }
 }
