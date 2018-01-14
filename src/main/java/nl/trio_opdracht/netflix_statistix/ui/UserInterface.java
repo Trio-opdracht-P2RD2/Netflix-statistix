@@ -20,6 +20,7 @@ public class UserInterface implements Runnable {
 
     @Override public void run() {
         window = new Window(Configuration.appName);
+        window.setIcon("appicon.png");
         createComponents(window.getContentPane());
         window.showWindow();
     }
