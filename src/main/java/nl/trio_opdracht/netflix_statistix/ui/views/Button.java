@@ -16,11 +16,6 @@ public class Button extends View<JButton> {
         super(new JButton(text));
     }
 
-    public Button(View button){
-        super(button);
-        if(button instanceof Button) this.onClickListener = ((Button) button).onClickListener;
-    }
-
     @Override protected void init(){
         setBackgroundColor(Color.LIGHT_GRAY);
         setOnHoverListener((view, isHovered) -> setBackgroundColor(isHovered ? getBackgroundColor().darker() : getBackgroundColor().brighter()));

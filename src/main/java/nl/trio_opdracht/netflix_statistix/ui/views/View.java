@@ -42,14 +42,6 @@ public class View<T extends JComponent> {
         init();
     }
 
-    public View(View<T> view){
-        this.view = view.getJComponent();
-        this.fontName = view.fontName;
-        this.fontType = view.fontType;
-        this.fontSize = view.fontSize;
-        this.onHoverListener = view.onHoverListener;
-    }
-
     protected void init(){}
 
     public T getJComponent(){
