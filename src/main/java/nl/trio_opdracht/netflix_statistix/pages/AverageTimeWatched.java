@@ -80,6 +80,6 @@ public class AverageTimeWatched extends Page {
     }
 
     @Override public String getTitle() {
-        return "Gemiddeld % gekeken";
+        return "Gemiddeld % gekeken per aflevering";
     }
 }
