@@ -18,4 +18,6 @@ public class Configuration {
     public final static Color backgroundColor = Color.decode("#EEEEEE");
 
     public final static Color tintColor = Color.decode("#E50914");
+
+    public final static String defaultFont = "Segoe UI";
 }
