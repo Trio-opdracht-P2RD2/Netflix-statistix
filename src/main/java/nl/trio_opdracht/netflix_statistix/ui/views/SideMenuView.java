@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import javax.swing.BoxLayout;
 import javax.swing.SwingConstants;
 
-import nl.trio_opdracht.netflix_statistix.ColorTools;
+import nl.trio_opdracht.netflix_statistix.ui.ColorTools;
 import nl.trio_opdracht.netflix_statistix.ui.FontType;
 
 import static nl.trio_opdracht.netflix_statistix.Configuration.backgroundColor;

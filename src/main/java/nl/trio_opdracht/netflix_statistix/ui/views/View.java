@@ -11,7 +11,7 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.border.EmptyBorder;
 
-import nl.trio_opdracht.netflix_statistix.ColorTools;
+import nl.trio_opdracht.netflix_statistix.ui.ColorTools;
 import nl.trio_opdracht.netflix_statistix.Configuration;
 import nl.trio_opdracht.netflix_statistix.ui.FontType;
 
