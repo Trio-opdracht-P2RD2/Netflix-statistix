@@ -15,7 +15,7 @@ public class Configuration {
 
     public final static String projectPath = System.getProperty("user.dir") + "\\src\\main";
 
-    public final static Color backgroundColor = Color.getColor("#EEEEEE");
+    public final static Color backgroundColor = Color.decode("#EEEEEE");
 
-    public final static Color tintColor = Color.getColor("#E50914");
+    public final static Color tintColor = Color.decode("#E50914");
 }
