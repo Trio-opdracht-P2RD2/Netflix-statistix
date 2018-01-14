@@ -13,7 +13,7 @@ public class Window extends JFrame {
         super(title);
 
         setPreferredSize(new Dimension(1000, 800));
-        setMinimumSize(new Dimension(550, 500));
+        setMinimumSize(new Dimension(750, 500));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
