@@ -1,4 +1,4 @@
-package nl.trio_opdracht.netflix_statistix;
+package nl.trio_opdracht.netflix_statistix.ui;
 
 import java.awt.Color;
 
