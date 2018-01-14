@@ -88,7 +88,7 @@ CREATE TABLE Aflevering (
         ON DELETE CASCADE
 );
 
-INSERT INTO AFLEVERING VALUES
+INSERT INTO Aflevering VALUES
     (1001, 'Sherlock', 'S01E01', 'A Study in Pink', '01:28'), 
     (1002, 'Sherlock', 'S01E02', 'The Blind Banker', '01:28'), 
     (1003, 'Sherlock', 'S01E03', 'The Great Game', '01:28'), 
