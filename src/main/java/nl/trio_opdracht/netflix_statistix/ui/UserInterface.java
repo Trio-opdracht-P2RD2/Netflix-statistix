@@ -8,9 +8,12 @@ import java.awt.event.WindowEvent;
 import nl.trio_opdracht.netflix_statistix.Configuration;
 import nl.trio_opdracht.netflix_statistix.pages.Page;
 import nl.trio_opdracht.netflix_statistix.ui.views.BottomInfoView;
+import nl.trio_opdracht.netflix_statistix.ui.views.Button;
 import nl.trio_opdracht.netflix_statistix.ui.views.ContainerView;
 import nl.trio_opdracht.netflix_statistix.ui.views.SideMenuView;
 import nl.trio_opdracht.netflix_statistix.ui.views.Window;
+
+import static nl.trio_opdracht.netflix_statistix.Configuration.backgroundColor;
 
 public class UserInterface implements Runnable {
     private Window window;
@@ -37,6 +40,7 @@ public class UserInterface implements Runnable {
 
         ContainerView contentView = new ContainerView();
         contentView.setPadding(25, 25, 25, 25);
+        contentView.setBackground(backgroundColor);
         container.add(contentView);
 
         SideMenuView sideMenuView = new SideMenuView();
@@ -48,5 +52,6 @@ public class UserInterface implements Runnable {
             });
         }
         container.add(sideMenuView, BorderLayout.WEST);
+        ((Button) sideMenuView.getComponents()[0]).doClick();
     }
 }

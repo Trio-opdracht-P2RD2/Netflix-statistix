@@ -33,7 +33,7 @@ public class TextView extends JLabel implements ViewPadding, ViewText {
 
         setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        setPadding(2, 2, 2, 2);
+        setPadding(4, 4, 4, 4);
     }
 
     public void setTextSize(int size){

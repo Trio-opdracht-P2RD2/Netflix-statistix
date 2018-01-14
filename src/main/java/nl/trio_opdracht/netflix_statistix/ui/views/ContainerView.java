@@ -1,6 +1,5 @@
 package nl.trio_opdracht.netflix_statistix.ui.views;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.LayoutManager;
 
@@ -9,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import nl.trio_opdracht.netflix_statistix.ui.views.interfaces.ViewPadding;
+
+import static nl.trio_opdracht.netflix_statistix.Configuration.backgroundColor;
 
 public class ContainerView extends JPanel implements ViewPadding {
     public ContainerView(){
@@ -27,7 +28,7 @@ public class ContainerView extends JPanel implements ViewPadding {
     }
 
     private void init(){
-        setBackground(Color.WHITE);
+        setBackground(backgroundColor);
         setAlignmentX(Component.LEFT_ALIGNMENT);
     }
 

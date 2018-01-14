@@ -1,5 +1,7 @@
 package nl.trio_opdracht.netflix_statistix;
 
+import java.awt.Color;
+
 import nl.trio_opdracht.netflix_statistix.database.SQLAccountName;
 
 public class Configuration {
@@ -12,4 +14,8 @@ public class Configuration {
     public final static String authors = "Informatica 1A - Marc, Björn, Thomas";
 
     public final static String projectPath = System.getProperty("user.dir") + "\\src\\main";
+
+    public final static Color backgroundColor = Color.getColor("#EEEEEE");
+
+    public final static Color tintColor = Color.getColor("#E50914");
 }
