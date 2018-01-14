@@ -57,6 +57,6 @@ public class TimesFullyWatchedFilm extends Page {
     }
 
     @Override public String getTitle() {
-        return "Bekeken films";
+        return "Film - aantal keren volledig bekeken";
     }
 }

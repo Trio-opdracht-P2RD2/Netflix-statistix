@@ -56,6 +56,6 @@ public class FilmsWatched extends Page {
     }
 
     @Override public String getTitle() {
-        return "Bekeken films";
+        return "Bekeken films per profiel";
     }
 }
