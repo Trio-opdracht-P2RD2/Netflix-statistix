@@ -11,7 +11,9 @@ import nl.trio_opdracht.netflix_statistix.Configuration;
 public class Window extends JFrame {
     public Window(String title){
         super(title);
+
         setPreferredSize(new Dimension(1000, 800));
+        setMinimumSize(new Dimension(550, 500));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
