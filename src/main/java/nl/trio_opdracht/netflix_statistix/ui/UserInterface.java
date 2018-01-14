@@ -2,6 +2,8 @@ package nl.trio_opdracht.netflix_statistix.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import nl.trio_opdracht.netflix_statistix.Configuration;
 import nl.trio_opdracht.netflix_statistix.pages.Page;
@@ -22,6 +24,11 @@ public class UserInterface implements Runnable {
         window = new Window(Configuration.appName);
         window.setIcon("appicon.png");
         createComponents(window.getContentPane());
+        window.addWindowListener(new WindowAdapter() {
+            @Override public void windowClosing(WindowEvent we) {
+                pages[0].closeSqlConnection();
+            }
+        });
         window.showWindow();
     }
 

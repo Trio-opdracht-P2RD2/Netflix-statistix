@@ -32,4 +32,8 @@ public abstract class Page {
     protected SQLConnection getSqlConnection(){
         return sqlConnection;
     }
+
+    public void closeSqlConnection(){
+        sqlConnection.disconnect();
+    }
 }
