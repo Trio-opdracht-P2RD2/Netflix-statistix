@@ -1,10 +1,9 @@
 package nl.trio_opdracht.netflix_statistix.ui.views;
 
+import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.JButton;
-
-import static nl.trio_opdracht.netflix_statistix.Configuration.tintColor;
 
 public class Button extends View<JButton> {
     private OnClickListener onClickListener;
@@ -23,7 +22,7 @@ public class Button extends View<JButton> {
     }
 
     @Override protected void init(){
-        setBackgroundColor(tintColor);
+        setBackgroundColor(Color.LIGHT_GRAY);
         setOnHoverListener((view, isHovered) -> setBackgroundColor(isHovered ? getBackgroundColor().darker() : getBackgroundColor().brighter()));
         getJComponent().addActionListener(actionEvent -> {
             if(onClickListener != null) onClickListener.onClick(Button.this);

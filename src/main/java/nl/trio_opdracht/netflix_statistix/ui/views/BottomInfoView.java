@@ -1,7 +1,8 @@
 package nl.trio_opdracht.netflix_statistix.ui.views;
 
-import java.awt.Color;
 import java.awt.GridLayout;
+
+import nl.trio_opdracht.netflix_statistix.Configuration;
 
 public class BottomInfoView extends ContainerView {
     public BottomInfoView(String appName, String authors){
@@ -13,7 +14,7 @@ public class BottomInfoView extends ContainerView {
     }
 
     @Override protected void init(){
-        setBackgroundColor(Color.WHITE);
+        setBackgroundColor(Configuration.backgroundColor.brighter().brighter());
         setPadding(4, 4, 4, 4);
     }
 }

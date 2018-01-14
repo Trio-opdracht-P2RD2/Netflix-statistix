@@ -8,8 +8,10 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.border.EmptyBorder;
 
+import nl.trio_opdracht.netflix_statistix.ColorTools;
 import nl.trio_opdracht.netflix_statistix.Configuration;
 import nl.trio_opdracht.netflix_statistix.ui.FontType;
 
@@ -76,6 +78,9 @@ public class View<T extends JComponent> {
 
     public void setBackgroundColor(Color color){
         getJComponent().setBackground(color);
+        setTextColor(ColorTools.isColorDark(color) ? Color.WHITE : Color.BLACK);
+        for(Component component : getJComponent().getComponents())
+            if(component instanceof JLabel) component.setForeground(ColorTools.isColorDark(color) ? Color.WHITE : Color.BLACK);
     }
 
     public Color getBackgroundColor(){
@@ -91,6 +96,7 @@ public class View<T extends JComponent> {
     }
 
     public void addChild(View child){
+        if(child instanceof TextView) child.setTextColor(ColorTools.isColorDark(getBackgroundColor()) ? Color.WHITE : Color.BLACK);
         getJComponent().add(child.getJComponent());
         getJComponent().updateUI();
     }

@@ -1,11 +1,12 @@
 package nl.trio_opdracht.netflix_statistix.ui.views;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.util.Collection;
 
 import javax.swing.JComboBox;
+
+import nl.trio_opdracht.netflix_statistix.Configuration;
 
 public class DropDown extends View<JComboBox<String>> {
     private OnItemSelectedListener onItemSelectedListener;
@@ -19,7 +20,7 @@ public class DropDown extends View<JComboBox<String>> {
     }
 
     @Override protected void init(){
-        setBackgroundColor(Color.WHITE);
+        setBackgroundColor(Configuration.backgroundColor.brighter().brighter());
         getJComponent().setMaximumSize(new Dimension(250, 30));
         setHorizontalAlignment(Component.LEFT_ALIGNMENT);
         getJComponent().addActionListener(actionEvent -> {
