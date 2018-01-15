@@ -187,4 +187,8 @@ public class View<T extends JComponent> {
         getJComponent().removeAll();
         getJComponent().updateUI();
     }
+
+    public void setToolTipText(String text){
+        getJComponent().setToolTipText(text);
+    }
 }

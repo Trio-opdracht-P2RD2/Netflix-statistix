@@ -49,7 +49,7 @@ public class UserInterface implements Runnable {
      * @param container The container of the Window
      */
     private void createComponents(Container container) {
-        container.add(new BottomInfoView(Configuration.appName, Configuration.authors).getJComponent(), BorderLayout.SOUTH);
+        container.add(new BottomInfoView(Configuration.appName, Configuration.authors, Configuration.authorsLong).getJComponent(), BorderLayout.SOUTH);
 
         ContainerView contentView = new ContainerView(BoxLayout.Y_AXIS);
         contentView.setPadding(25, 25, 25, 25);

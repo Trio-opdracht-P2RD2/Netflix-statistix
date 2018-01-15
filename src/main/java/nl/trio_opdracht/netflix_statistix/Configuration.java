@@ -32,6 +32,7 @@ public class Configuration {
      * Creators of the app and database.
      */
     public final static String authors = "Informatica 1A - Marc, Björn, Thomas";
+    public final static String authorsLong = "Marc Bouwman (2125922), \nBjörn van Bergen (2128132), \nThomas Buurstede (2122226)";
 
     /**
      * Path to the sources folder, including the resources.
