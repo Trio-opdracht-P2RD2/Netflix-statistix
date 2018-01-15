@@ -16,7 +16,7 @@ public class Configuration {
      * If you have configured MS SQL Server with the installation guide of Avans, use SQLAccountName.SQLEXPRESS
      * If you use a different name, change SQLAccountName to String and add the correct name between quotes ""
      */
-    public final static SQLAccountName sqlAccountName = SQLAccountName.MSSQLSERVER;
+    public final static SQLAccountName sqlAccountName = SQLAccountName.SQLEXPRESS;
 
     /**
      * Name of the app, which is shown as title and in the bottom view.
