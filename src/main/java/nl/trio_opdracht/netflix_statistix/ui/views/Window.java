@@ -27,11 +27,11 @@ public class Window extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * Sets the icon of the window from a path
+     * @param path the path to the image, relative to the resources folder.
+     */
     public void setIcon(String path){
         setIconImage(new ImageIcon(Configuration.projectPath + "\\resources\\" + path).getImage());
-    }
-
-    public void addChild(View child){
-        add(child.getJComponent());
     }
 }

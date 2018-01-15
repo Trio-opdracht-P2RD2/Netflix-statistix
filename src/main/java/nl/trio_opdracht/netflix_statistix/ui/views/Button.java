@@ -18,7 +18,7 @@ public class Button extends View<JButton> {
 
     @Override protected void init(){
         setBackgroundColor(Color.LIGHT_GRAY);
-        setOnHoverListener((view, isHovered) -> setBackgroundColor(isHovered ? getBackgroundColor().darker() : getBackgroundColor().brighter()));
+        setOnHoverListener((view, isHovered) -> setBackgroundColor(isHovered ? getBackgroundColor().darker() : getBackgroundColor().brighter())); // Makes the background darker when being hovered
         getJComponent().addActionListener(actionEvent -> {
             if(onClickListener != null) onClickListener.onClick(Button.this);
         });
@@ -29,6 +29,9 @@ public class Button extends View<JButton> {
         setPadding(4, 4, 4, 4);
     }
 
+    /**
+     * Notifies the requesting method that the button has been clicked
+     */
     public interface OnClickListener {
         void onClick(Button view);
     }

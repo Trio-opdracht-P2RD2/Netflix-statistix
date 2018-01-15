@@ -4,6 +4,9 @@ import java.awt.GridLayout;
 
 import nl.trio_opdracht.netflix_statistix.Configuration;
 
+/**
+ * The static view on the bottom, containing the name of the app and the authors
+ */
 public class BottomInfoView extends ContainerView {
     public BottomInfoView(String appName, String authors){
         super(new GridLayout(1, 2));

@@ -8,6 +8,9 @@ import javax.swing.JComboBox;
 
 import nl.trio_opdracht.netflix_statistix.Configuration;
 
+/**
+ * A dropdown with selectable items
+ */
 public class DropDown extends View<JComboBox<String>> {
     private OnItemSelectedListener onItemSelectedListener;
 
@@ -28,6 +31,9 @@ public class DropDown extends View<JComboBox<String>> {
         });
     }
 
+    /**
+     * Notifies the requesting method that an item has been selected
+     */
     public interface OnItemSelectedListener {
         void onItemSelected(DropDown view, String item, int index);
     }

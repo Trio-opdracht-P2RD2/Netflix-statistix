@@ -8,6 +8,9 @@ import javax.swing.JPanel;
 
 import nl.trio_opdracht.netflix_statistix.Configuration;
 
+/**
+ * A view that contains other views
+ */
 public class ContainerView extends View<JPanel> {
     public ContainerView(){
         super(new JPanel());
