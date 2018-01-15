@@ -41,10 +41,9 @@ public class Configuration {
 
     /**
      * The color of the background of the app.
-     * Other parts, like the menu, will use tints of this color.
-     * This can be changed to any color, try #212121 for dark mode or #00383F if you like blue.
+     * Other parts of the app, like the menu, will use tints of this color.
      */
-    public final static Color backgroundColor = Color.decode("#EEEEEE");
+    public static Color backgroundColor = Color.decode("#EEEEEE");
 
     /**
      * Font that every view of this app will use, currently the default font of Windows.

@@ -14,10 +14,13 @@ import nl.trio_opdracht.netflix_statistix.ui.FontType;
  * A view that contains (menu) buttons
  */
 public class SideMenuView extends ContainerView {
-    private final static Color menuBackgroundColor = ColorTools.isColorDark(Configuration.backgroundColor) ? Configuration.backgroundColor.darker().darker() : Configuration.backgroundColor.darker();
+    private static Color getMenuBackgroundColor() {
+        return ColorTools.isColorDark(Configuration.backgroundColor) ? Configuration.backgroundColor.darker().darker() : Configuration.backgroundColor.darker();
+    }
+
     public SideMenuView(){
         super(BoxLayout.Y_AXIS);
-        setBackgroundColor(menuBackgroundColor);
+        setBackgroundColor(getMenuBackgroundColor());
         getJComponent().setPreferredSize(new Dimension(350, getJComponent().getPreferredSize().height)); // Sets the width to 350px
     }
 
@@ -30,7 +33,7 @@ public class SideMenuView extends ContainerView {
         Button button = new Button(title);
         button.setOnClickListener(buttonView -> {
             // Changes the background color of all buttons to default, but makes the color of the selected button equal to the content
-            getChildren().forEach(view -> view.setBackground(menuBackgroundColor));
+            getChildren().forEach(view -> view.setBackground(getMenuBackgroundColor()));
             buttonView.setBackgroundColor(button.isHovered() ? Configuration.backgroundColor.darker() : Configuration.backgroundColor);
 
             onClickListener.onClick(buttonView); // Calls the callback
@@ -38,7 +41,7 @@ public class SideMenuView extends ContainerView {
         button.setPadding(25, 20, 25, 20);
         button.getJComponent().setMaximumSize(new Dimension(Integer.MAX_VALUE, button.getJComponent().getMinimumSize().height)); // Makes sure the button uses the full width available
         button.getJComponent().setHorizontalAlignment(SwingConstants.LEFT); // Aligns all text to the left side
-        button.setBackgroundColor(menuBackgroundColor);
+        button.setBackgroundColor(getMenuBackgroundColor());
         button.setFontType(FontType.BOLD);
         addChild(button);
     }

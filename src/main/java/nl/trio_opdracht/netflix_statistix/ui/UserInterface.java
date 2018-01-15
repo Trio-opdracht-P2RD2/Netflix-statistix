@@ -1,12 +1,14 @@
 package nl.trio_opdracht.netflix_statistix.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.SwingUtilities;
 
 import nl.trio_opdracht.netflix_statistix.Configuration;
 import nl.trio_opdracht.netflix_statistix.pages.Page;
@@ -60,11 +62,17 @@ public class UserInterface implements Runnable {
         // Add the pages to the menu and let them show when clicked
         for(Page page : pages) {
             page.setContentView(contentView);
-            sideMenuView.addMenuItem(page.getTitle(), actionEvent -> {
+            sideMenuView.addMenuItem(page.getTitle(), view -> {
                 page.showPage();
                 window.setTitle(Configuration.appName + " - " + page.getTitle());
             });
         }
+        sideMenuView.addMenuItem("Gebruik " + (ColorTools.isColorDark(Configuration.backgroundColor) ?  "lichte" : "donkere") + " modus", view -> {
+            window.setVisible(false);
+            window.dispose();
+            Configuration.backgroundColor = ColorTools.isColorDark(Configuration.backgroundColor) ? Color.decode("#EEEEEE") : Color.decode("#212121");
+            SwingUtilities.invokeLater(new UserInterface(pages));
+        });
         container.add(sideMenuView.getJComponent(), BorderLayout.WEST);
         ((JButton) sideMenuView.getChildren().get(0)).doClick();
     }
