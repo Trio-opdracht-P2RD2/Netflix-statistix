@@ -62,6 +62,9 @@ public class SQLConnection {
             try(ResultSet resultSet = statement.executeQuery(sql)){// Executes the query on the database, receives the results and closes it again when not used.
                 if(resultListener != null) resultListener.onQueryResultReceived(resultSet);// When not null, send the results to the listener.
             }
+        } catch (ClassNotFoundException e){
+            System.out.println("The driver was not found, please add it to the project! Check out File > Project Structure > Libraries.");
+            System.exit(0);
         } catch (Exception e) {
             e.printStackTrace(); // Something went wrong!
         }
