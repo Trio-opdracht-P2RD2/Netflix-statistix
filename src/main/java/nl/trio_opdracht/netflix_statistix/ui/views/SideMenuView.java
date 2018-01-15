@@ -21,7 +21,7 @@ public class SideMenuView extends ContainerView {
     public SideMenuView(){
         super(BoxLayout.Y_AXIS);
         setBackgroundColor(getMenuBackgroundColor());
-        getJComponent().setPreferredSize(new Dimension(350, getJComponent().getPreferredSize().height)); // Sets the width to 350px
+        getJComponent().setPreferredSize(new Dimension(340, getJComponent().getPreferredSize().height)); // Sets the width to 350px
     }
 
     /**

@@ -77,7 +77,7 @@ public class AverageTimeWatched extends Page {
         accountsContainer.addChild(accountsDropdown);
         getContentView().addChild(accountsContainer);
 
-        getContentView().addChild(new TextView("Gemiddeld aantal procent van elke aflevering van de geselecteerde serie wat bekeken is (niet-weergegeven afleveringen zijn helemaal niet gekeken): ", true));
+        getContentView().addChild(new TextView("Gemiddeld aantal procent van elke aflevering van de geselecteerde serie wat bekeken is door het geselecteerde account (niet-weergegeven afleveringen zijn helemaal niet gekeken): ", true));
         getContentView().addChild(results);
     }
 

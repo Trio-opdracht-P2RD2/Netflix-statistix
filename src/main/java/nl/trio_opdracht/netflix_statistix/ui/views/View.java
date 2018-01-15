@@ -124,7 +124,7 @@ public class View<T extends JComponent> {
      * @param bottom The padding on the bottom side
      */
     public void setPadding(int left, int top, int right, int bottom){
-        getJComponent().setBorder(new EmptyBorder(top, right, bottom, left));
+        getJComponent().setBorder(new EmptyBorder(top, left, bottom, right));
     }
 
     /**

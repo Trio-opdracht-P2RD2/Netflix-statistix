@@ -45,7 +45,7 @@ public class TimesFullyWatchedFilm extends Page {
 
         ContainerView filmsContainer = new ContainerView(BoxLayout.X_AXIS);
         filmsContainer.setPadding(0, 0, 0, 10);
-        filmsContainer.addChild(new TextView("Selecteer film: ", true));
+        filmsContainer.addChild(new TextView("Selecteer film: "));
         filmsContainer.addChild(filmsDropdown);
         getContentView().addChild(filmsContainer);
 

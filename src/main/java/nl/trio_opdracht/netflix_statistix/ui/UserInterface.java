@@ -54,7 +54,7 @@ public class UserInterface implements Runnable {
         container.add(new BottomInfoView(Configuration.appName, Configuration.authors, Configuration.authorsLong).getJComponent(), BorderLayout.SOUTH);
 
         ContainerView contentView = new ContainerView(BoxLayout.Y_AXIS);
-        contentView.setPadding(25, 25, 25, 25);
+        contentView.setPadding(20, 20, 10, 10);
         contentView.setBackgroundColor(Configuration.backgroundColor);
         container.add(contentView.getJComponent());
 
