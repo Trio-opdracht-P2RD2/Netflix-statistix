@@ -110,6 +110,10 @@ public class View<T extends JComponent> {
         getJComponent().setForeground(color);
     }
 
+    public Color getTextColor(){
+        return getJComponent().getForeground();
+    }
+
     /**
      * Sets the padding (used in CSS on the web and Java/XML on Android).
      * This increases the width and height of the view, while the width and the height of the content stays the same.
