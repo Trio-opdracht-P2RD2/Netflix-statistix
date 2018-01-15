@@ -17,6 +17,11 @@ public class Window extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
+    public Window(String title, String iconPath){
+        this(title);
+        setIcon(iconPath);
+    }
+
     public void showWindow(){
         pack();
         setVisible(true);

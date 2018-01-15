@@ -16,8 +16,10 @@ public class FilmsWatched extends Page {
         super(sqlConnection);
     }
 
+    /**
+     * Executes the query and adds all profile names and numbers to the HashMap
+     */
     @Override protected void show() {
-        getContentView().setLayout(BoxLayout.Y_AXIS);
         getSqlConnection().executeQuery(Configuration.databaseName,
                 "SELECT Abonneenummer, Profielnaam\n" +
                 "FROM Profiel", results -> {
@@ -28,6 +30,11 @@ public class FilmsWatched extends Page {
                 });
     }
 
+    /**
+     * Adds the accounts from the query to the dropdown
+     * @param accounts a HashMap with the names of all accounts and account numbers
+     * @throws SQLException notices the parent method that an error occurred
+     */
     private void showResults(HashMap<String, Integer> accounts) throws SQLException{
         ContainerView results = new ContainerView(BoxLayout.Y_AXIS);
         results.setPadding(0, 25, 0, 0);
@@ -40,6 +47,12 @@ public class FilmsWatched extends Page {
         getContentView().addChild(results);
     }
 
+    /**
+     * Updates the content when a different account has been selected
+     * @param results the view where the results have to get places in
+     * @param profileName the name of the selected profile
+     * @param abboneenummer the number of the selected profile
+     */
     private void updateContent(ContainerView results, String profileName, int abboneenummer){
         results.removeAllChildren();
         getSqlConnection().executeQuery(Configuration.databaseName,
@@ -47,8 +60,8 @@ public class FilmsWatched extends Page {
                 "FROM Bekeken\n" +
                 "INNER JOIN Film ON Film.ID = Bekeken.Gezien\n" +
                 "WHERE Abonneenummer = " + abboneenummer + " AND Profielnaam = '" + profileName + "'", result2 -> {
-                    while (result2.next()) results.addChild(new TextView(result2.getString("Titel")));
-                    if(results.getChildCount() == 0) results.addChild(new TextView("Geen bekeken films voor het geselecteerde profiel"));
+                    while (result2.next()) results.addChild(new TextView(result2.getString("Titel"))); // Add the results to the contentView.
+                    if(results.getChildCount() == 0) results.addChild(new TextView("Geen bekeken films voor het geselecteerde profiel")); // Show a message that there are no results if there aren't any.
                 });
     }
 

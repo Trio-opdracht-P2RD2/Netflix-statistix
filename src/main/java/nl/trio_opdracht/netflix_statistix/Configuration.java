@@ -14,6 +14,7 @@ public class Configuration {
      * This can differ for everyone.
      * If you have configured MS SQL Server with default settings, use SQLAccountName.MSSQLSERVER
      * If you have configured MS SQL Server with the installation guide of Avans, use SQLAccountName.SQLEXPRESS
+     * If you use a different name, change SQLAccountName to String and add the correct name between quotes ""
      */
     public final static SQLAccountName sqlAccountName = SQLAccountName.MSSQLSERVER;
 

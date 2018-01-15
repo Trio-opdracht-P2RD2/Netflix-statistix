@@ -6,7 +6,7 @@ import java.awt.LayoutManager;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-import static nl.trio_opdracht.netflix_statistix.Configuration.backgroundColor;
+import nl.trio_opdracht.netflix_statistix.Configuration;
 
 public class ContainerView extends View<JPanel> {
     public ContainerView(){
@@ -23,7 +23,7 @@ public class ContainerView extends View<JPanel> {
     }
 
     @Override protected void init(){
-        setBackgroundColor(backgroundColor);
+        setBackgroundColor(Configuration.backgroundColor);
         setHorizontalAlignment(Component.LEFT_ALIGNMENT);
     }
 

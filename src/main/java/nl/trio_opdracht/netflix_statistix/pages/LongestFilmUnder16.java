@@ -9,6 +9,9 @@ public class LongestFilmUnder16 extends Page {
         super(sqlConnection);
     }
 
+    /**
+     * Executes a query on the database and shows all results.
+     */
     @Override protected void show() {
         getSqlConnection().executeQuery(Configuration.databaseName,
                 "SELECT TOP 1 Titel\n" +

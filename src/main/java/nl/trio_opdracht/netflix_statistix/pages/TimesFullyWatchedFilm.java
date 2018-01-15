@@ -16,8 +16,10 @@ public class TimesFullyWatchedFilm extends Page {
         super(sqlConnection);
     }
 
+    /**
+     * Executes the query and adds the results to the HashMap
+     */
     @Override protected void show() {
-        getContentView().setLayout(BoxLayout.Y_AXIS);
         getSqlConnection().executeQuery(Configuration.databaseName,
                 "SELECT ID, Titel\n" +
                 "FROM Film", results -> {
@@ -28,6 +30,11 @@ public class TimesFullyWatchedFilm extends Page {
                 });
     }
 
+    /**
+     * Shows the results in a dropdown
+     * @param films an HashMap of films with their name and ID.
+     * @throws SQLException notifies the parent method that an error has occurred
+     */
     private void showResults(HashMap<String, Integer> films) throws SQLException{
         ContainerView results = new ContainerView(BoxLayout.Y_AXIS);
         results.setPadding(0, 25, 0, 0);
@@ -40,6 +47,12 @@ public class TimesFullyWatchedFilm extends Page {
         getContentView().addChild(results);
     }
 
+    /**
+     * Updates the content when a different film was selected
+     * @param results the view where the results have to get added to
+     * @param filmName the name of the selected movie
+     * @param filmID the ID of the selected film.
+     */
     private void updateContent(ContainerView results, String filmName, int filmID){
         results.removeAllChildren();
         getSqlConnection().executeQuery(Configuration.databaseName,
