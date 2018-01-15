@@ -1,6 +1,6 @@
 package nl.trio_opdracht.netflix_statistix.ui.views;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.awt.Color;
@@ -17,7 +17,7 @@ public class ViewTest {
 
         containerView.setBackgroundColor(Color.BLACK);
 
-        Assert.assertFalse(ColorTools.isColorDark(textView.getTextColor()));
+        Assertions.assertFalse(ColorTools.isColorDark(textView.getTextColor()));
     }
 
     @Test public void testAddChildWithDarkBackgroundColorMakesTextViewLight(){
@@ -28,6 +28,6 @@ public class ViewTest {
 
         containerView.addChild(textView);
 
-        Assert.assertFalse(ColorTools.isColorDark(textView.getTextColor()));
+        Assertions.assertFalse(ColorTools.isColorDark(textView.getTextColor()));
     }
 }

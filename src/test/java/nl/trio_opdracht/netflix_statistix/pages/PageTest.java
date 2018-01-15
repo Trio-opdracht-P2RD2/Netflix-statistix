@@ -1,6 +1,6 @@
 package nl.trio_opdracht.netflix_statistix.pages;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import nl.trio_opdracht.netflix_statistix.ui.views.ContainerView;
@@ -16,6 +16,6 @@ public class PageTest {
 
         page.showPage();
 
-        Assert.assertEquals(0, page.getContentView().getChildCount());
+        Assertions.assertEquals(0, page.getContentView().getChildCount());
     }
 }

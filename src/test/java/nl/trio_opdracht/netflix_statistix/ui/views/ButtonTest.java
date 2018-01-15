@@ -1,6 +1,6 @@
 package nl.trio_opdracht.netflix_statistix.ui.views;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class ButtonTest {
@@ -14,7 +14,7 @@ public class ButtonTest {
 
         button.click();
 
-        Assert.assertTrue(isClicked);
+        Assertions.assertTrue(isClicked);
     }
 
     @Test public void testSetOnClickListenerWorks(){
@@ -24,6 +24,6 @@ public class ButtonTest {
 
         button.getJComponent().doClick();
 
-        Assert.assertTrue(onClickListenerWorks);
+        Assertions.assertTrue(onClickListenerWorks);
     }
 }
