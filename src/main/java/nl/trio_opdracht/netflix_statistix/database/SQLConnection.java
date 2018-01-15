@@ -1,7 +1,5 @@
 package nl.trio_opdracht.netflix_statistix.database;
 
-import com.microsoft.sqlserver.jdbc.SQLServerException;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -80,7 +78,7 @@ public class SQLConnection {
     private void connectToDatabase(String database) throws SQLException {
         try {
             connection = DriverManager.getConnection(createConnectionUrl(database)); // Connects with the database
-        } catch (SQLServerException e){
+        } catch (Exception e){
             System.out.println("Could not connect with the database. Have you entered the correct account name in Configuration.java?");
             System.exit(0);
         }
