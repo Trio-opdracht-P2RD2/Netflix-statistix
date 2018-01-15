@@ -26,7 +26,6 @@ public class AverageTimeWatched extends Page {
                 "SELECT Serie\n" +
                 "FROM Serie", seriesResult -> {
                     ArrayList<String> series = new ArrayList<>();
-                    series.add("Selecteer serie");
                     while (seriesResult.next()) series.add(seriesResult.getString("Serie"));
 
                     getSqlConnection().executeQuery(Configuration.databaseName,
@@ -48,7 +47,7 @@ public class AverageTimeWatched extends Page {
      */
     private void showResults(ArrayList<String> series, HashMap<String, Integer> accounts) throws SQLException{
         ContainerView results = new ContainerView(BoxLayout.Y_AXIS);
-        results.setPadding(0, 25, 0, 0);
+        results.setPadding(0, 10, 0, 0);
 
         DropDown seriesDropdown = new DropDown(series);
 
@@ -66,9 +65,19 @@ public class AverageTimeWatched extends Page {
         seriesDropdown.selectByIndex(0);
         accountsDropdown.selectByIndex(0);
 
-        getContentView().addChild(seriesDropdown);
-        getContentView().addChild(new TextView(" ")); // Add empty space between the dropdowns
-        getContentView().addChild(accountsDropdown);
+        ContainerView seriesContainer = new ContainerView(BoxLayout.X_AXIS);
+        seriesContainer.setPadding(0, 0, 0, 10);
+        seriesContainer.addChild(new TextView("Selecteer serie: "));
+        seriesContainer.addChild(seriesDropdown);
+        getContentView().addChild(seriesContainer);
+
+        ContainerView accountsContainer = new ContainerView(BoxLayout.X_AXIS);
+        accountsContainer.setPadding(0, 0, 0, 10);
+        accountsContainer.addChild(new TextView("Selecteer account: "));
+        accountsContainer.addChild(accountsDropdown);
+        getContentView().addChild(accountsContainer);
+
+        getContentView().addChild(new TextView("Gemiddeld aantal procent van elke aflevering van de geselecteerde serie wat bekeken is (niet-weergegeven afleveringen zijn helemaal niet gekeken): ", true));
         getContentView().addChild(results);
     }
 
@@ -81,17 +90,16 @@ public class AverageTimeWatched extends Page {
      */
     private void updateContent(ContainerView results, String serie, String profileName, int abboneenummer){
         results.removeAllChildren();
-        if(!Objects.equals(serie, "Selecteer serie")) getSqlConnection().executeQuery(Configuration.databaseName,
+        getSqlConnection().executeQuery(Configuration.databaseName,
                 "SELECT Titel, Seizoen, AVG(Percentage) AS 'AverageWatched'\n" +
                 "FROM Aflevering\n" +
                 "INNER JOIN Bekeken ON Bekeken.Gezien = Aflevering.ID\n" +
                 "WHERE Serie = '" + serie + "'" + (!Objects.equals(profileName, "Alle accounts") ? " AND Abonneenummer = " + abboneenummer + " AND Profielnaam = '" + profileName + "'" : "") + "\n" +
                 "GROUP BY ID, Titel, Seizoen\n" +
                 "ORDER BY Seizoen", result2 -> {
-                    while (result2.next()) results.addChild(new TextView(result2.getString("Seizoen") + " - " + result2.getString("Titel") + ": " + result2.getInt("AverageWatched") + "%"));
-                    if(results.getChildCount() == 0) results.addChild(new TextView("Geen bekeken afleveringen voor het geselecteerde profiel"));
+                    while (result2.next()) results.addChild(new TextView(result2.getString("Seizoen") + " - " + result2.getString("Titel") + ": " + result2.getInt("AverageWatched") + "%", true));
+                    if(results.getChildCount() == 0) results.addChild(new TextView("Geen bekeken afleveringen voor het geselecteerde profiel", true));
                 });
-        else results.addChild(new TextView("Geen serie geselecteerd"));
     }
 
     @Override public String getTitle() {

@@ -14,12 +14,13 @@ public class LongestFilmUnder16 extends Page {
      */
     @Override protected void show() {
         getSqlConnection().executeQuery(Configuration.databaseName,
-                "SELECT TOP 1 Titel\n" +
+                "SELECT TOP 1 Titel, Tijdsduur, Leeftijdsindicatie\n" +
                 "FROM Film\n" +
                 "WHERE CAST(SUBSTRING(Leeftijdsindicatie, 0, CHARINDEX(' jaar en ouder', Leeftijdsindicatie)) AS INT) < 16\n" +
                 "ORDER BY Tijdsduur DESC", results -> {
-                    while(results.next()) getContentView().addChild(new TextView(results.getString("Titel")));
-                    if(getContentView().getChildCount() == 0) getContentView().addChild(new TextView("Er zijn geen films voor kinderen jonder dan 16 jaar"));
+                    getContentView().addChild(new TextView("Langste film voor kijkers onder de 16 jaar: ", true));
+                    while(results.next()) getContentView().addChild(new TextView(results.getString("Titel") + " (" + results.getString("Tijdsduur") + ", " + results.getString("Leeftijdsindicatie") + ")", true));
+                    if(getContentView().getChildCount() == 1) getContentView().addChild(new TextView("Er zijn geen films voor kinderen jonder dan 16 jaar", true));
                 });
     }
 

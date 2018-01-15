@@ -37,13 +37,19 @@ public class TimesFullyWatchedFilm extends Page {
      */
     private void showResults(HashMap<String, Integer> films) throws SQLException{
         ContainerView results = new ContainerView(BoxLayout.Y_AXIS);
-        results.setPadding(0, 25, 0, 0);
+        results.setPadding(0, 10, 0, 0);
 
-        DropDown accountsDropdown = new DropDown(films.keySet());
-        accountsDropdown.setOnItemSelectedListener((dropDown, item, index) -> updateContent(results, item, films.getOrDefault(item, -1)));
-        accountsDropdown.selectByIndex(0);
+        DropDown filmsDropdown = new DropDown(films.keySet());
+        filmsDropdown.setOnItemSelectedListener((dropDown, item, index) -> updateContent(results, item, films.getOrDefault(item, -1)));
+        filmsDropdown.selectByIndex(0);
 
-        getContentView().addChild(accountsDropdown);
+        ContainerView filmsContainer = new ContainerView(BoxLayout.X_AXIS);
+        filmsContainer.setPadding(0, 0, 0, 10);
+        filmsContainer.addChild(new TextView("Selecteer film: ", true));
+        filmsContainer.addChild(filmsDropdown);
+        getContentView().addChild(filmsContainer);
+
+        getContentView().addChild(new TextView("Het aantal keer dat de geselecteerde film volledig gekeken is: ", true));
         getContentView().addChild(results);
     }
 

@@ -37,13 +37,19 @@ public class FilmsWatched extends Page {
      */
     private void showResults(HashMap<String, Integer> accounts) throws SQLException{
         ContainerView results = new ContainerView(BoxLayout.Y_AXIS);
-        results.setPadding(0, 25, 0, 0);
+        results.setPadding(0, 10, 0, 0);
 
         DropDown accountsDropdown = new DropDown(accounts.keySet());
         accountsDropdown.setOnItemSelectedListener((dropDown, item, index) -> updateContent(results, item, accounts.getOrDefault(item, -1)));
         accountsDropdown.selectByIndex(0);
 
-        getContentView().addChild(accountsDropdown);
+        ContainerView accountsContainer = new ContainerView(BoxLayout.X_AXIS);
+        accountsContainer.setPadding(0, 0, 0, 10);
+        accountsContainer.addChild(new TextView("Selecteer account: "));
+        accountsContainer.addChild(accountsDropdown);
+        getContentView().addChild(accountsContainer);
+
+        getContentView().addChild(new TextView("Lijst met films die het geselecteerde profiel heeft gekeken: ", true));
         getContentView().addChild(results);
     }
 
@@ -61,7 +67,7 @@ public class FilmsWatched extends Page {
                 "INNER JOIN Film ON Film.ID = Bekeken.Gezien\n" +
                 "WHERE Abonneenummer = " + abboneenummer + " AND Profielnaam = '" + profileName + "'", result2 -> {
                     while (result2.next()) results.addChild(new TextView(result2.getString("Titel"))); // Add the results to the contentView.
-                    if(results.getChildCount() == 0) results.addChild(new TextView("Geen bekeken films voor het geselecteerde profiel")); // Show a message that there are no results if there aren't any.
+                    if(results.getChildCount() == 0) results.addChild(new TextView("Geen bekeken films voor het geselecteerde profiel", true)); // Show a message that there are no results if there aren't any.
                 });
     }
 

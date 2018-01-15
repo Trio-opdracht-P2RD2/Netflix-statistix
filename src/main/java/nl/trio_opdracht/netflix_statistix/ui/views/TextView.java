@@ -13,7 +13,11 @@ public class TextView extends View<JLabel> {
     }
 
     public TextView(String text){
-        super(new JLabel(text));
+        this(text, false);
+    }
+
+    public TextView(String text, boolean multiLine){
+        super(new JLabel(multiLine ? "<html>" + text + "</html>" : text));// Add html, so the text will automatically show on the next line when it doesn't fit inside the window.
     }
 
     @Override protected void init(){
